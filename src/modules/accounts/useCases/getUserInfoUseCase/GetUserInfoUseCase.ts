@@ -1,6 +1,6 @@
 import { inject, injectable } from 'tsyringe'
-import { JwtActions } from '../../../../utils/JwtActions'
-import { IUsersRepository } from '../../repositories/IUsersRepository'
+import { JwtActions } from '@/utils/JwtActions'
+import { IUsersRepository } from '@/modules/accounts/repositories/IUsersRepository'
 
 // --------------------------------------------------------------------------
 

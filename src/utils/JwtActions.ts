@@ -1,4 +1,4 @@
-import { AppError } from '../errors/AppError'
+import { AppError } from '@/errors/AppError'
 import jwt, { JwtPayload, Secret } from 'jsonwebtoken'
 
 //------------------------------------------
