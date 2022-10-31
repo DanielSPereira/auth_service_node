@@ -26,7 +26,7 @@ export class UsersRepository implements IUsersRepository {
     }
 
     async create({ email, password }: ICreateUserDTO) {
-        const user = await prisma.user.create({
+        await prisma.user.create({
             data: { email, password },
             select: {
                 id: true,
@@ -35,7 +35,5 @@ export class UsersRepository implements IUsersRepository {
                 updated_at: true,
             }
         })
-        
-        return user
     } 
 }

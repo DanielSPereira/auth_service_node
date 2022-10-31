@@ -1,5 +1,7 @@
+import { User } from '@prisma/client'
 import bcrypt from 'bcrypt'
 import { inject, injectable } from 'tsyringe'
+import { JwtActions } from '../../../../utils/JwtActions'
 import { AppError } from '../../../../errors/AppError'
 import { ICreateUserDTO, IUsersRepository } from '../../repositories/IUsersRepository'
 
@@ -14,14 +16,12 @@ export class CreateUserUseCase {
         const userAlreadyExists = await this.usersRepository.findByEmail(email)
 
         if (userAlreadyExists) {
-            throw new AppError("User already exists", 400)
+            throw new AppError("User already exists", 409)
         }
         // encrypt password
         const encryptedPass = bcrypt.hashSync(password, 10)
 
-        // save user
-        const user = await this.usersRepository.create({ email, password: encryptedPass })
-        
-        return user
+        // create user
+        await this.usersRepository.create({ email, password: encryptedPass })
     }
 }
