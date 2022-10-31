@@ -12,5 +12,5 @@ export interface IUsersRepository {
 
     findByID(id: string): Promise<Omit<User, "password"> | null>
 
-    create({ email, password }: ICreateUserDTO): Promise<Omit<User, "password">>
+    create({ email, password }: ICreateUserDTO): Promise<void>
 }
