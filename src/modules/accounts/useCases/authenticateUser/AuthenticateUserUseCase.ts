@@ -1,8 +1,8 @@
 import bcrypt from 'bcrypt'
 import { inject, injectable } from 'tsyringe'
-import { JwtActions } from '../../../../utils/JwtActions'
-import { AppError } from '../../../../errors/AppError'
-import { ICreateUserDTO, IUsersRepository } from '../../repositories/IUsersRepository'
+import { JwtActions } from '@/utils/JwtActions'
+import { AppError } from '@/errors/AppError'
+import { ICreateUserDTO, IUsersRepository } from '@/modules/accounts/repositories/IUsersRepository'
 
 // --------------------------------------------------------------------------
 
@@ -21,7 +21,7 @@ export class AuthenticateUserUseCase {
         const passwordsMatch = await bcrypt.compare(password, user.password) 
 
         if (!passwordsMatch) {
-            throw new AppError('Unauthorized', 401)
+            throw new AppError('password not match', 401)
         }
 
         // generates JWT

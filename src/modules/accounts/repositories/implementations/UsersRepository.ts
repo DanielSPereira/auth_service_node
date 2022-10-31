@@ -1,5 +1,5 @@
 import { User } from "@prisma/client";
-import { prisma } from "../../../../database/prismaClient";
+import { prisma } from "@/database/prismaClient";
 import { ICreateUserDTO, IUsersRepository } from "../IUsersRepository";
 
 export class UsersRepository implements IUsersRepository {
